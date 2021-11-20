@@ -1,0 +1,26 @@
+{
+   "name": "Shopper",
+   "version": "1.0.0",
+   "description": "DBMS project: ecommerce app",
+   "main": "app.js",
+   "author": "Adnan",
+   "license": "MIT",
+   "scripts": {
+      "start": "nodemon ./src/app.js"
+   },
+   "devDependencies": {
+      "eslint": "^7.2.0",
+      "eslint-config-airbnb-base": "14.2.1",
+      "eslint-config-node": "^4.1.0",
+      "eslint-plugin-import": "^2.22.1",
+      "eslint-plugin-node": "^11.1.0",
+      "nodemon": "^2.0.15"
+   },
+   "dependencies": {
+      "cors": "^2.8.5",
+      "dotenv": "^10.0.0",
+      "express": "^4.17.1",
+      "global": "^4.4.0",
+      "pg": "^8.7.1"
+   }
+}
