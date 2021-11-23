@@ -1,0 +1,14 @@
+.slick-slide > div {
+    width: 90%;
+    margin: auto;
+    height: 35vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}   
+
+.image{
+
+    margin:0px;
+    
+}

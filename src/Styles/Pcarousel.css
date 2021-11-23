@@ -1,0 +1,69 @@
+.slick-slide > div {
+    width: 90%;
+    margin: auto;
+    height: 35vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}   
+
+
+.slick-prev:before, .slick-next:before {
+    color: black !important;
+}
+
+.pcontainer{
+    width: 95%;
+    margin: auto;
+}
+
+.pp-item{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0.5rem;
+    margin:1rem;
+    background-color: whitesmoke;
+    border-radius: 0.5rem;
+
+}
+
+.pp-image{
+    width: 100%;
+    height: 50%;
+    border-radius: 0.5rem;
+    
+}
+
+.pitem-header{
+    font-size: 1.3rem;
+    padding: 0.4rem; 
+    
+}
+
+.pprice{
+    font-size: 1.1rem;
+    margin: 0.5rem;
+    font-weight: bold;
+    color: rgb(5, 19, 2);
+}
+
+.pseller{
+    margin: 0.5rem;
+}
+
+
+h5{
+    align-self:flex-end;
+    font-size: 1rem;
+    font-weight: bold;
+    color: lightslategray;
+}
+
+
+.pitem-info{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    
+}

@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Italianno&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.psect{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+
+}
+
+.lmain{
+
+    display: flex;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 30px;
+    
+}
+
+/*x--x left x--x*/
+
+.left{
+    display: flex;
+    flex: 0 1 50%;
+    justify-content: center;
+          
+}
+
+.image{
+    width: 100%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    margin-left: 0;
+}
+
+
+/* -x-x- right -x-x */
+
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 50%;
+    
+}
+
+.heading{
+    margin: 2.2rem 0 ;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 60px;
+}
+
+.intro{
+    margin-bottom:30px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.uinp, .linp{
+    margin: 1.7rem;
+    border-radius: 20px;
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    
+    font-family: 'Varela Round', sans-serif ;
+    letter-spacing: 1px;
+}
+
+.uinp::placeholder, .linp::placeholder{
+    text-align: center;
+}
+
+.or{
+    width: 20%;
+    text-align: center;
+    border-bottom: 1px solid #527a7a;
+    line-height: 0.1rem;
+    margin: 10px 0 20px;
+}
+
+.or span{
+    background: white;
+    padding: 0 5px;
+}
+
+button{
+    margin:20px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.signin{
+    background-color: white;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 20px;
+    font-size: 1.2rem;
+}
+
+.signin:hover{
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    transition-duration: 0.1s;
+}
+
+.wrapper{
+    margin-top: 20px;
+}
+
+.wrapper .button{
+    display: block;
+    height:50px;
+    width: 100px;
+    background: #fff;
+    float:left;
+    border-radius: 50px;
+    margin: 20px 10px;
+    transition: all 0.3s ease-out;
+    overflow: hidden;
+    cursor: pointer;
+
+}
+
+.wrapper .button .gicon{
+    display: inline-block;
+    border-radius: 50px;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    box-sizing: border-box;
+    line-height: 60px;
+}
+
+.wrapper .button .gspan{
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+
+}
+
+.wrapper .button:hover{
+    width: 400px;
+    border: none;
+}
