@@ -19,7 +19,11 @@
 		"node/shebang": "off",
 		"comma-dangle": "off",
 		"node/no-unsupported-features/es-syntax": "off",
-		"no-process-exit": "off"
+		"no-process-exit": "off",
+		"object-curly-newline": "off",
+		"no-throw-literal": "off",
+		"prefer-template": "off",
+		"eqeqeq": "off"
 	},
 	"ignorePatterns": ["node_modules/"]
 }
