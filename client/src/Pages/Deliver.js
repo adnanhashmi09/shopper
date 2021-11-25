@@ -27,7 +27,9 @@ const Deliver = () => {
   return (
     <>
       <Navbar />
-      <h1 className="dheader">CHECKOUT</h1>
+      <div className="dheader">
+        <h1>CHECKOUT</h1>
+      </div>
       <div className="dmain">
         <div className="dleft">
           <div className="dinfo">
@@ -40,18 +42,18 @@ const Deliver = () => {
                 <form action="#" className="dform">
                   <div className="up">
                     <div className="up1">
-                      <input type="text" placeholder="First Name" />
+                      <input type="text" placeholder="First Name" required />
                     </div>
                     <div className="up2">
-                      <input type="text" placeholder="Last Name" />
+                      <input type="text" placeholder="Last Name" required />
                     </div>
                   </div>
                   <div className="down">
                     <div className="down1">
-                      <input type="email" placeholder="Email" />
+                      <input type="email" placeholder="Email" required />
                     </div>
                     <div className="down2">
-                      <input type="tel" placeholder="Contact Number" />
+                      <input type="tel" placeholder="Contact Number" required />
                     </div>
                   </div>
                 </form>
@@ -70,15 +72,16 @@ const Deliver = () => {
                         type="text"
                         placeholder="Shipping Address"
                         className="shiping"
+                        required
                       />
                     </div>
                   </div>
                   <div className="down">
                     <div className="down1">
-                      <input type="text" placeholder="Zip Code" />
+                      <input type="text" placeholder="Zip Code" required />
                     </div>
                     <div className="down2">
-                      <input type="text" placeholder="City" />
+                      <input type="text" placeholder="City" required />
                     </div>
                   </div>
                 </form>
@@ -128,7 +131,11 @@ const Deliver = () => {
                       </div>
                     </div>
                   </div>
-                  <input type="submit" value="Checkout And Buy" className="signin"/>
+                  <input
+                    type="submit"
+                    value="Checkout And Buy"
+                    className="signin"
+                  />
                 </form>
               </div>
             </div>

@@ -3,6 +3,33 @@
     padding: 0;
     box-sizing: border-box;
 }
+.dheader{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.dheader::before{
+  content: "";
+  position: absolute;
+  background-image: url('../Assets/checkout.jpeg');
+  opacity: 0.3;
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: 0px;
+  right: 30rem;
+  bottom: 0px;
+  left: 30rem;
+}
+.dheader > h1{
+  position: relative;
+  text-align: center;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  margin: auto;
+}
+
 .dmain{
   display: flex;
   justify-content: center;
@@ -13,14 +40,7 @@
   flex-direction: row;
   flex: 0 1 70%;
 }
-.dheader{
-    text-align: center;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    width: 60%;
-    margin: auto;
-    background-color: blanchedalmond;
-}
+
 
 .dinfo{
     display: flex;

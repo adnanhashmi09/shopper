@@ -4,12 +4,34 @@ import '../Styles/Navbar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import Dropdown from './Dropdown';
 
 const Navbar = () => {
 
   const [trigger, setTrigger] = useState(false);
 
   const handleClick = () => setTrigger(!trigger);
+
+  const [click, setClick] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
+
+  const closeMobileMenu = () => setClick(false);
+
+  const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
+  };
+
+  const onMouseLeave = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
+  };
 
     return (
       <>
@@ -24,10 +46,20 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
-            <li className="its">
+            {/* <li className="its">
               <Link to="/products" className="i">
                 Products
               </Link>
+            </li> */}
+            <li
+              className="nav-item its"
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
+            >
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                Products
+              </Link>
+              {dropdown && <Dropdown />}
             </li>
             <li className="its">
               <div className="sc">

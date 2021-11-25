@@ -5,6 +5,7 @@ import Products from "./Products";
 import Housedecgrid from "./Housedecgrid";
 import Pcarousel from "./Pcarousel";
 import Grocery from "./Grocery";
+import Education from "./Education";
 
 const Main = () => {
   const [market, setMarket] = useState(data);
@@ -24,28 +25,31 @@ const Main = () => {
       </div>
 
       <div className="prods1">
-        <Products
-          data={market}
-        />
+        <Products data={market} />
       </div>
 
-      <div className="i-header2">
-        <h1>Suggested For You</h1>
-        <p>Based on your Shopping</p>
-      </div>
-      <Pcarousel
-        data={market}
-      />
 
-      <div className="homedec">
+      <div className="i-header" id="sprt">
+        <h1>Stay Active with Latest Equipments</h1>
+      </div>
+      <Pcarousel data={market} />
+
+      <div className="i-header" id="homedc">
         <h1>Make your House a Beautiful Place</h1>
       </div>
       <Housedecgrid data={market} />
 
-      <div className="grocery">
+      <div className="i-header" id="grcry">
         <h1>Fresh Grocery at Reasonable Prices</h1>
       </div>
-      <Grocery data={market}/>
+      <Grocery data={market} />
+
+      <div className="i-header" id="edctn">
+        <h1>Get Enlightened with Great Books</h1>
+      </div>
+      <Education data={market} />
+
+
     </>
   );
 };

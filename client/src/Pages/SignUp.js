@@ -13,7 +13,9 @@ const SignUp = () => {
           </div>
           <div className="right">
             <div className="heading">
-              <h1 className="h">MARKET</h1>
+              <Link to='/' className="i">
+                <h1 className="h">MARKET</h1>
+              </Link>
             </div>
             <div className="intro">Welcome to Market</div>
             <div className="inp">
@@ -47,10 +49,6 @@ const SignUp = () => {
                     type="text"
                     placeholder="Your Address"
                     required
-                  />
-                  <input
-                    type="date"
-                    
                   />
                   <div className="button">
                     <Link to="/login">
