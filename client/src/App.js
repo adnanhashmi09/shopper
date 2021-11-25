@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cart from "./Pages/Cart";
 import SignUp from "./Pages/SignUp";
 import Deliver from "./Pages/Deliver";
+import Sell from "./Pages/Sell";
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route exact path="/checkout">
           <Deliver />
+        </Route>
+        <Route exact path="/sell">
+          <Sell />
         </Route>
       </Switch>
     </Router>

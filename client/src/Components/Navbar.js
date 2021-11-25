@@ -76,7 +76,7 @@ const Navbar = () => {
 
           <ul className="esstls">
             <li className="its">
-              <Link to="/login">
+              <Link to="/sell">
                 <FontAwesomeIcon
                   icon={faUser}
                   size="2x"
