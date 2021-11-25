@@ -1,0 +1,26 @@
+.main{
+    padding: 3rem;
+    margin: 5rem;
+}
+
+.container{
+    display: flex;
+}
+
+.i1{
+    background-color: #FFE53B;
+background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+
+}
+
+.i2{
+    background-color: #FFDEE9;
+background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+
+}
+
+.i3{
+     background-color: #3EECAC;
+    background-image: linear-gradient(19deg, #3EECAC 0%, #EE74E1 100%);
+
+}
