@@ -21,7 +21,7 @@ const handleError = (ERROR) => {
 
 module.exports.signup_post = async (req, res) => {
 	try {
-		const { email, password, name, address } = req.body;
+		const { email, password, name, type, address } = req.body;
 
 		validateCredentials(email, password);
 		const salt = await bcrypt.genSalt();
@@ -32,8 +32,16 @@ module.exports.signup_post = async (req, res) => {
 		);
 
 		const { id, name: fullName, email: emailAddress } = newUser.rows[0];
+
+		const isA = await pool.query(
+			`INSERT INTO ${type} (user_id) VALUES($1) RETURNING *`,
+			[id]
+		);
+
+		const userType = Object.keys(isA.rows[0])[0];
+
 		req.session.uid = id;
-		res.json({ id, name: fullName, email: emailAddress });
+		res.json({ id, name: fullName, email: emailAddress, type: userType });
 	} catch (error) {
 		console.error(error);
 		const err = handleError(error);
