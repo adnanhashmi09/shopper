@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Italianno&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.psect{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+
+}
+
+.ssmain{
+
+    display: flex;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 30px;
+    
+}
+
+/*x--x left x--x*/
+
+.left{
+    display: flex;
+    flex: 0 1 50%;
+    justify-content: center;
+          
+}
+
+.image{
+    width: 100%;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    margin-left: 2rem;
+}
+
+
+/* -x-x- right -x-x */
+
+.inp{
+    display: flex;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 0 1 50%;
+}
+
+.heading{
+    margin: 2.2rem 0 ;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 60px;
+}
+
+.intro{
+    margin-bottom:30px;
+    
+}
+
+
+.sform > input{
+    margin: 1.7rem;
+    border-radius: 20px;
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Varela Round', sans-serif ;
+    letter-spacing: 1px;
+}
+
+.sform > input::placeholder{
+    text-align: center;
+}
+
+.button{
+    margin:20px;
+    font-family: 'Varela Round', sans-serif;
+}
+

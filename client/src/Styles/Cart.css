@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    text-align: center;
+}
+
+.cmain{
+    display: flex;
+}
+
+.ecart > p {
+    text-align: center;
+    font-size: 2rem;
+    padding: 2rem;
+}
+
+/* x-x-x LEFT x-x-x */
+
+.left{
+    display: flex;
+    flex: 0 1 70%;
+    padding: 2rem;
+    flex-direction: column;
+}
+
+.sleft{
+    display: flex;
+    padding: 3rem;
+}
+
+.subleft{
+    display: flex;
+    flex-direction: column;
+}
+
+.imagec{
+    width: 30%;
+}
+
+.imgc{
+    width: 100%;
+}
+
+.productc{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.itemc{
+    font-size: 2.5rem;
+}
+
+.hashc, .sellerc{
+    padding: 0.3rem;
+}
+
+.pricec{
+    display: flex;
+    padding: 1rem;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.qtyc{
+    display: flex;
+}
+
+.remc{
+    padding: 2rem;
+    align-self: center;
+}
+
+.clearcart{
+    align-self: center;
+    padding: 2rem;
+}
+
+.ccbtn{
+    padding:1rem;
+    color: black;
+    border-radius: 1rem;
+}
+
+.ccbtn:hover{
+    background-color: black;
+    color: white;
+}
+
+/* x-x-x RIGHT x-x-x */
+
+.right{
+    display: flex;
+    flex: 0 1 30%;
+    justify-content: center;
+    align-content: center;
+    
+}
+.subright{
+    justify-content: center;
+}
+

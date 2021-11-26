@@ -1,0 +1,59 @@
+.fcontainer{
+    margin: auto;
+    width: 90%;
+
+}
+
+.slick-track{
+    padding-top: 50px ;
+    padding-bottom: 50px;
+    
+}
+
+.slick-slide{
+    text-align: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slick-slide:not(.slick-current) {
+  filter: brightness(1);
+}
+
+// .slick-slide.slick-current {
+//   transform: scale(1.3);
+//   position: relative;
+//   z-index: 1;
+// }
+
+.activeSlide{
+  transform: scale(1.3);
+  position: relative;
+  z-index: 1;
+}
+
+.slide{
+  filter: brightness(0.8);
+  transform: scale(0.9);
+}
+
+
+.slick-slide img {
+  width: 100%;
+}  
+
+.fimage:hover{
+
+  z-index: 0;
+  filter: brightness(0.4);
+  transform: translateY(0.2rem);
+  transition: transform 0.5s ease-in-out;
+
+
+}
+
+.container .carousel .slide img {
+  max-height: 300vh;
+  width: auto; /*100vw*/
+}
+
+
