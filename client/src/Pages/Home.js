@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import Navbar from '../Components/Navbar';
 import Main from '../Components/Main';
 
 const Home = () => {
+	return (
+		<div>
+			<Navbar />
+			<Main />
+		</div>
+	);
+};
 
-    return (
-        <div>
-            <Navbar />
-            <Main />
-        </div>
-    )
-}
-
-export default Home
+export default Home;

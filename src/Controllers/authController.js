@@ -87,7 +87,7 @@ module.exports.logout = (req, res) => {
 			res.status(400).json(err);
 		}
 
-		res.send('logged out.');
+		res.json({ msg: 'logged out.' });
 	});
 };
 
@@ -95,6 +95,6 @@ module.exports.isLoggedIn = (req, res) => {
 	if (req.session.uid) {
 		res.json({ id: req.session.uid });
 	} else {
-		res.send('not logged In');
+		res.send(false);
 	}
 };
