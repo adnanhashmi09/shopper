@@ -38,7 +38,7 @@ module.exports.upload_product = async (req, res) => {
 			[sellerID, name, +price, +stock, category, response.url]
 		);
 
-		res.status(200).json({ msg: 'Image uploaded successfully' });
+		res.status(200).json({ msg: 'Product added successfully' });
 	} catch (error) {
 		console.error(error);
 		res.status(400).json({ error });

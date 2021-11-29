@@ -1,3 +1,8 @@
-.limg{
-    padding:3rem;
+.limg {
+	padding: 3rem;
+}
+
+.disabled {
+	pointer-events: none;
+	cursor: not-allowed;
 }

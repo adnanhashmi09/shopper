@@ -10,9 +10,12 @@ const Sell = () => {
 	const [category, setCategory] = useState();
 	const [price, setPrice] = useState();
 	const [stock, setStock] = useState();
+	const [fetching, setFetching] = useState(false);
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
+		// change the button text from sell to Adding product
+		setFetching(true);
 		let formData = new FormData();
 		formData.append('name', name);
 		formData.append('category', category);
@@ -30,11 +33,20 @@ const Sell = () => {
 				}
 			);
 			const data = await response.json();
-			alert(data.msg);
+
+			// change the button back to Add Product
+			setFetching(false);
 
 			if (!response.ok) {
 				throw data;
 			}
+
+			setImage(null);
+			setName('');
+			setCategory(null);
+			setPrice('');
+			setStock('');
+			alert(data.msg);
 		} catch (error) {
 			console.log(error);
 		}
@@ -110,8 +122,15 @@ const Sell = () => {
 									<div className="button">
 										<input
 											type="submit"
-											value="Sell"
-											className="signin"
+											value={
+												fetching
+													? 'Adding Product...'
+													: 'Add Product'
+											}
+											className={
+												fetching ? 'signin disabled' : 'signin'
+											}
+											disabled={fetching}
 										/>
 									</div>
 								</form>
