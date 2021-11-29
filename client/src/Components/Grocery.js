@@ -42,10 +42,6 @@ const Grocery = ({ data }) => {
                   <div className="pitem-info">
                     <div className="pupper">
                       <h4 className="pitem-header">{name}</h4>
-                      <h4 className="pprice">
-                        <FontAwesomeIcon icon={faRupeeSign}></FontAwesomeIcon>
-                        {price}
-                      </h4>
                       <p className="pseller">{seller}</p>
                     </div>
                     <h5>{category}</h5>

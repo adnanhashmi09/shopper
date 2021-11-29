@@ -51,7 +51,9 @@ const Login = () => {
 					</div>
 					<div className="intro">Welcome to Market</div>
 					<div className="inp">
-						<form className="form" onSubmit={loginHandler}>
+						<form className="form" 
+							onSubmit={loginHandler}
+						>
 							<input
 								type="text"
 								placeholder="Your Name"
