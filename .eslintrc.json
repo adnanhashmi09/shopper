@@ -23,7 +23,8 @@
 		"object-curly-newline": "off",
 		"no-throw-literal": "off",
 		"prefer-template": "off",
-		"eqeqeq": "off"
+		"eqeqeq": "off",
+		"implicit-arrow-linebreak": "off"
 	},
 	"ignorePatterns": ["node_modules/"]
 }

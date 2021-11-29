@@ -5,8 +5,8 @@ const PGSession = require('connect-pg-simple')(session);
 
 require('dotenv').config();
 
-const Routes = require('./Routes/route');
 const authRoutes = require('./Routes/authRoutes');
+const mainRoutes = require('./Routes/mainRoutes');
 const pool = require('./database/db');
 
 const app = express();
@@ -40,5 +40,5 @@ app.listen(port, () => {
 });
 
 // routes
-app.use(Routes);
 app.use(authRoutes);
+app.use('/api', mainRoutes);
