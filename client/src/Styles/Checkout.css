@@ -17,7 +17,14 @@
 .chbtn{
     background-color: tomato;
     width: 60%;
+    border-radius: 0.5rem;
+    color: white;
 
+}
+
+.chbtn > p:hover{
+    color: tomato;
+    background-color: white;
 }
 
 .chdbtn{

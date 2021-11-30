@@ -7,7 +7,7 @@ import { faRupeeSign } from '@fortawesome/free-solid-svg-icons';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import '../Styles/Housedec.scss';
+import '../Styles/Housedec.css';
 import { Link } from 'react-router-dom';
 
 const Housedecgrid = ({data}) => {
@@ -50,11 +50,6 @@ const Housedecgrid = ({data}) => {
                     </Link>
                     <div className="fitem-info">
                       <h4 className="fitem-header">{name}</h4>
-                      <h4 className="fprice">
-                        <FontAwesomeIcon icon={faRupeeSign}></FontAwesomeIcon>
-                        {price}
-                      </h4>
-                      <h4>{idx}</h4>
                       <h4>IKEA</h4>
                     </div>
                   </article>

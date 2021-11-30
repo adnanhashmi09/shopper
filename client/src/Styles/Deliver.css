@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -28,36 +30,37 @@
   padding-top: 5rem;
   padding-bottom: 5rem;
   margin: auto;
+  font-family: 'Ubuntu', sans-serif;
 }
-
 .dmain{
   display: flex;
   justify-content: center;
-
 }
 .dleft{
   display: flex;
   flex-direction: row;
   flex: 0 1 70%;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1.5rem;
 }
-
-
 .dinfo{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-
 .cate{
     display: flex;
     flex-direction: column;
     flex: 0 1 20%;
     justify-content: center;
-}
 
+}
 .dsubinfo{
     display: flex;
     padding: 3rem 3rem;
+    box-shadow: 5px 5px black;
+    border-radius: 3rem;
+    margin: 1rem;
 }
 
 .nos, .nms{
@@ -91,11 +94,16 @@
   visibility: visible;
   pointer-events: all;
 }
+.payhdr{
+  margin: 4rem 0rem;
+  text-align: center;
+  opacity: 0.6;
+}
 .wrapper{
   display: inline-flex;
   background: #fff;
-  height: 100px;
-  width: 400px;
+  height: 8rem;
+  width: 20rem;
   align-items: center;
   justify-content: space-evenly;
   border-radius: 5px;
@@ -160,4 +168,9 @@ input[type="radio"]{
 #option-1:checked:checked ~ .option-1 span,
 #option-2:checked:checked ~ .option-2 span{
   color: #fff;
+}
+.dbtn{
+  width: 50%;
+  align-self: center;
+
 }

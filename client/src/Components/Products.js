@@ -30,12 +30,6 @@ const Products = ({data}) => {
                           style={{ textDecoration: "none" }}
                         >
                           <h4 className="item-header">{name}</h4>
-                          <h4 className="price">
-                            <FontAwesomeIcon
-                              icon={faRupeeSign}
-                            ></FontAwesomeIcon>
-                            {price}
-                          </h4>
                         </Link>
                         <p className="seller">{seller}</p>
                       </div>

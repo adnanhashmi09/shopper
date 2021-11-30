@@ -9,12 +9,12 @@ import Navbar from "../Components/Navbar";
 import InputMask from "react-input-mask";
 
 function CardNumberInput(props) {
-  return(
-  <InputMask
-    mask='9999 9999 9999 9999'
-    value={props.value}
-    onChange={props.onChange}
-    placeholder="Card Number"></InputMask>
+  return (
+    <InputMask
+      mask='9999 9999 9999 9999'
+      value={props.value}
+      onChange={props.onChange}
+      placeholder="Card Number"></InputMask>
   );
 }
 
@@ -22,7 +22,23 @@ const Deliver = () => {
   const [payment, setPayment] = useState(null);
   const [number, setNumber] = useState('')
 
-  const handleInput = ({target: { value }}) => setNumber(value);
+  const handleInput = ({ target: { value } }) => setNumber(value);
+
+  const history = useHistory();
+
+  useLayoutEffect(() => {
+  	fetch('http://localhost:5000/isLoggedIn', {
+  		method: 'GET',
+  		credentials: 'include',
+  	})
+  		.then((response) => response.json())
+  		.then((data) => {
+  			console.log(data);
+  			if (!data.id) {
+  				history.push('/login');
+  			}
+  		});
+  }, []);
 
   return (
     <>
@@ -116,7 +132,24 @@ const Deliver = () => {
                       <FontAwesomeIcon icon={faMoneyBillAlt}></FontAwesomeIcon>
                     </label>
                   </div>
-                  <div className={payment ? "active card" : "card"}>
+                  <div className={payment == null ? "active payhdr" : "card"}> ADD <br /> A <br /> PAYMENT METHOD</div>
+                  <div className="chmain">
+                      <div className="st">
+                        <h3>Subtotal</h3>
+                        <h5>$ 56.6</h5>
+                      </div>
+                      <hr />
+                      <div className="tax">
+                        <h3>Tax</h3>
+                        <h5>$ 3.4</h5>
+                      </div>
+                      <hr />
+                      <div className="ttl">
+                        <h1>Total</h1>
+                        <h1>$ 60.0</h1>
+                      </div>
+                    </div>
+                  <div className={payment ? "active card" : "card cash "}>
                     <div className="up">
                       <div className="up1">
                         <input type="text" placeholder="Card Owner" />
@@ -131,18 +164,17 @@ const Deliver = () => {
                       </div>
                     </div>
                   </div>
-                  <input
-                    type="submit"
-                    value="Checkout And Buy"
-                    className="signin"
-                  />
                 </form>
               </div>
             </div>
+            <button className="signin dbtn">
+              CHECKOUT AND BUY
+            </button>
           </div>
         </div>
         <div className="dright">
-          <h1>hello</h1>
+          <h1> SUCCESS ! <br /> OUT FOR DELIVERY </h1>
+
         </div>
       </div>
     </>
