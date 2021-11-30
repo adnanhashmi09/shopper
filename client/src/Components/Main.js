@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Styles/Main.css";
 import data from "../data";
 import Products from "./Products";
@@ -9,6 +9,18 @@ import Education from "./Education";
 
 const Main = () => {
   const [market, setMarket] = useState(data);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/products')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setMarket(data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, []);
 
   return (
     <>

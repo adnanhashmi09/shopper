@@ -206,10 +206,10 @@ const data = [
   },
   {
     id: 21,
-    name: "GROCERY",
+    name: "Maggi",
     image_src: "./chips.jpeg",
     seller: "Sunrise pvt. ltd.",
-    category: "Sports",
+    category: "Grocery",
     price: 70000,
     quantity: 1,
     incart: false,

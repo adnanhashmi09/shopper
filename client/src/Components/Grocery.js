@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRupeeSign, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -20,33 +21,30 @@ const Grocery = ({ data }) => {
   };
 
   const settings = {
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    centermode: true,
-    centerpadding: "20px",
-    autoplay: true,
-    autoplaySpeed: 4000
+    centerMode: true,
+  centerPadding: '60px',
+  slidesToShow: 1,
   };
 
   return (
     <div className="gcontainer">
       <Slider {...settings}>
         {data.map((product) => {
-          const { id, name, image_src, seller, category, price, quantity } =
+          const { p_id, name, description, category } =
             product;
-          if (id >=21 && id <= 30) {
+          if (true) {
             return (
-              <div key={id} className="pp-item">
-                <img src={image_src} alt="desc" className="pp-image" />
-                <Link to={`/buy/${id}`} style={{ textDecoration: "none" }}>
+              <div key={p_id} className="pp-item">
+                <img src={`http://localhost:5000/${description}`} alt="desc" className="pp-image" />
+                <Link to={`/buy/${p_id}`} style={{ textDecoration: "none" }}>
                   <div className="pitem-info">
                     <div className="pupper">
                       <h4 className="pitem-header">{name}</h4>
-                      <h4 className="pprice">
+                      {/* <h4 className="pprice">
                         <FontAwesomeIcon icon={faRupeeSign}></FontAwesomeIcon>
                         {price}
                       </h4>
-                      <p className="pseller">{seller}</p>
+                      <p className="pseller">{seller}</p> */}
                     </div>
                     <h5>{category}</h5>
                   </div>
