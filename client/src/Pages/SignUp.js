@@ -62,7 +62,9 @@ const SignUp = () => {
 						<div className="intro">Welcome to Market</div>
 						<div className="inp">
 							<div className="linp">
-								<form className="sform" onSubmit={submitHandler}>
+								<form className="sform" 
+								onSubmit={submitHandler}
+								>
 									<input
 										type="text"
 										placeholder="Your Name"

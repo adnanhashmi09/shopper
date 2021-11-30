@@ -30,7 +30,7 @@ const Grocery = ({ data }) => {
     <div className="gcontainer">
       <Slider {...settings}>
         {data.map((product) => {
-          const { p_id, name, description, category } =
+          const { p_id, name, description, category, seller, price } =
             product;
           if (true) {
             return (
@@ -40,11 +40,11 @@ const Grocery = ({ data }) => {
                   <div className="pitem-info">
                     <div className="pupper">
                       <h4 className="pitem-header">{name}</h4>
-                      {/* <h4 className="pprice">
+                      <h4 className="pprice">
                         <FontAwesomeIcon icon={faRupeeSign}></FontAwesomeIcon>
                         {price}
                       </h4>
-                      <p className="pseller">{seller}</p> */}
+                      <p className="pseller">{seller}</p>
                     </div>
                     <h5>{category}</h5>
                   </div>

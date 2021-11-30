@@ -3,21 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import '../Styles/Checkout.css';
 
 const Checkout = () => {
-	const history = useHistory();
-
-	useLayoutEffect(() => {
-		fetch('http://localhost:5000/isLoggedIn', {
-			method: 'GET',
-			credentials: 'include',
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				console.log(data);
-				if (!data.id) {
-					history.push('/login');
-				}
-			});
-	}, []);
 
 	return (
 		<div className="chmain">
@@ -35,7 +20,7 @@ const Checkout = () => {
 				<h1>Total</h1>
 				<h1>$ 60.0</h1>
 			</div>
-			<Link to="/checkout">
+			<Link to="/deliver">
 				<div className="chdbtn">
 					<button className="chbtn">
 						<p>Checkout</p>

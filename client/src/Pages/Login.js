@@ -24,7 +24,6 @@ const Login = () => {
 				credentials: 'include',
 			});
 			const data = await response.json();
-			console.log(response);
 			console.log(data);
 
 			if (!response.ok) {
@@ -51,7 +50,9 @@ const Login = () => {
 					</div>
 					<div className="intro">Welcome to Market</div>
 					<div className="inp">
-						<form className="form" onSubmit={loginHandler}>
+						<form className="form" 
+							onSubmit={loginHandler}
+						>
 							<input
 								type="text"
 								placeholder="Your Name"

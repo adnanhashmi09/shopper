@@ -7,20 +7,20 @@ import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown';
 
 const Navbar = () => {
-	useLayoutEffect(() => {
-		fetch('http://localhost:5000/isLoggedIn', {
-			method: 'GET',
-			credentials: 'include',
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				if (data.id) {
-					setAuth(true);
-				} else {
-					setAuth(false);
-				}
-			});
-	}, []);
+	// useLayoutEffect(() => {
+	// 	fetch('http://localhost:5000/isLoggedIn', {
+	// 		method: 'GET',
+	// 		credentials: 'include',
+	// 	})
+	// 		.then((response) => response.json())
+	// 		.then((data) => {
+	// 			if (data.id) {
+	// 				setAuth(true);
+	// 			} else {
+	// 				setAuth(false);
+	// 			}
+	// 		});
+	// }, []);
 
 	const [trigger, setTrigger] = useState(false);
 	const [auth, setAuth] = useState(false);
@@ -48,22 +48,22 @@ const Navbar = () => {
 		}
 	};
 
-	const logoutHandler = async () => {
-		try {
-			const response = await fetch('http://localhost:5000/logout', {
-				method: 'POST',
-				credentials: 'include',
-			});
+	// const logoutHandler = async () => {
+	// 	try {
+	// 		const response = await fetch('http://localhost:5000/logout', {
+	// 			method: 'POST',
+	// 			credentials: 'include',
+	// 		});
 
-			const data = await response.json();
-			setAuth(false);
-			history.push('/login');
+	// 		const data = await response.json();
+	// 		setAuth(false);
+	// 		history.push('/login');
 
-			console.log(data);
-		} catch (error) {
-			console.log(error);
-		}
-	};
+	// 		console.log(data);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// };
 
 	return (
 		<>
@@ -92,17 +92,6 @@ const Navbar = () => {
 							Products
 						</Link>
 						{dropdown && <Dropdown />}
-					</li>
-					<li className="its">
-						<div className="sc">
-							<FontAwesomeIcon
-								icon={faSearch}
-								size="2x"
-								className="si"
-								onClick={handleClick}
-							></FontAwesomeIcon>
-							<input type="text" className={trigger ? 't' : 'nt'} />
-						</div>
 					</li>
 				</ul>
 
