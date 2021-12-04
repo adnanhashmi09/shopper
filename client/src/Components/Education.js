@@ -37,9 +37,9 @@ const Education = ({ data }) => {
                 key={name}
                 className={idx === imageIndex + 1 ? "activeSlide" : "slide"}
               >
-                <Link to="/buy">
+                {/* <Link to="/cart"> */}
                   <img src={image} alt={name} className="fimage" />
-                </Link>
+                {/* </Link> */}
                 <div className="fitem-info">
                   <h4 className="fitem-header">{name}</h4>
                 </div>

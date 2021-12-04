@@ -34,13 +34,19 @@
 }
 
 
-.slick-slide img {
+/* .slick-slide img {
   width: 100%;
-}  
+}   */
 
 .fimage{
-  height: 300px;
-  width: 100px;
+  height: 600px;
+  width: auto;
+  margin: 0 auto;
+}
+
+.himg{
+  height:500px;
+  width:600px;
 }
 
 .fimage:hover{

@@ -6,6 +6,11 @@ import Housedecgrid from "./Housedecgrid";
 import Pcarousel from "./Pcarousel";
 import Grocery from "./Grocery";
 import Education from "./Education";
+import image1 from "../Assets/aaron-burden-QJDzYT_K8Xg-unsplash.jpg";
+import image2 from "../Assets/jack-b-fewhfXbCUzI-unsplash.jpg";
+import image3 from "../Assets/kate-hliznitsova-vm4_BwACHl4-unsplash.jpg";
+import image4 from "../Assets/nathan-oakley-gj1dnc7yRG0-unsplash.jpg";
+
 
 const Main = () => {
   const [market, setMarket] = useState(data);
@@ -25,16 +30,24 @@ const Main = () => {
   return (
     <>
       <div className="mup">
-        <div className="pink"></div>
-        <div className="peach"></div>
-        <div className="blue"></div>
-        <div className="green"></div>
+        <div className="pink">
+          <img src={image2}></img>
+        </div>
+        <div className="peach">
+          <img src={image4}></img>
+        </div>
+        <div className="blue">
+          <img src={image3}></img>
+        </div>
+        <div className="green">
+          <img src={image1}></img>
+        </div>
       </div>
 
-      <div className="i-header">
+      {/* <div className="i-header">
         <h1>Featured Products</h1>
         <p>Get the most trending items at reasonable prices</p>
-      </div>
+      </div> */}
 
       <div className="prods1">
         <Products data={market} />

@@ -22,8 +22,9 @@ const Grocery = ({ data }) => {
 
   const settings = {
     centerMode: true,
-  centerPadding: '60px',
-  slidesToShow: 2,
+    centerPadding: '100px',
+    slidesToShow: 4,
+    slidesToScroll: 1,
   };
 
   return (
@@ -35,16 +36,10 @@ const Grocery = ({ data }) => {
           if (category === 'Grocery') {
             return (
               <div key={name} className="pp-item">
-                <img src={image} alt="desc" className="pp-image" />
-                <Link to={`/buy/${name}`} style={{ textDecoration: "none" }}>
+                <img src={image} alt="desc" className="pp-image gimage" />
                   <div className="pitem-info">
                     <div className="pupper">
                       <h4 className="pitem-header">{name}</h4>
-                      {/* <h4 className="pprice">
-                        <FontAwesomeIcon icon={faRupeeSign}></FontAwesomeIcon>
-                        {price}
-                      </h4>
-                      <p className="pseller">{seller}</p> */}
                     </div>
                     <h5>{category}</h5>
                   </div>
@@ -54,7 +49,6 @@ const Grocery = ({ data }) => {
                       onClick={() => addToCart(product)}
                     ></FontAwesomeIcon>
                   </Link>
-                </Link>
               </div>
             );
           }

@@ -19,7 +19,7 @@ const Housedecgrid = ({data}) => {
     const settings = {
       centermode: true,
       centerpadding: "20px",
-      slidesToShow: 3,
+      slidesToShow: 4,
       slidesToScroll: 1,
       dots: true,
       autoplay: true,
@@ -46,7 +46,7 @@ const Housedecgrid = ({data}) => {
                     className={idx === imageIndex + 1 ? "activeSlide" : "slide"}
                   >
                     <Link to="/buy">
-                      <img src={image} alt={name} className="fimage" />
+                      <img src={image} alt={name} className="fimage himg" />
                     </Link>
                     <div className="fitem-info">
                       <h4 className="fitem-header">{name}</h4>
