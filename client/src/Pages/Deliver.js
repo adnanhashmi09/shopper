@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useLayoutEffect } from "react";
+import { useHistory } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCreditCard,

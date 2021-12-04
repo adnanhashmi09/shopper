@@ -38,12 +38,18 @@
   width: 100%;
 }  
 
+.fimage{
+  height: 300px;
+  width: 100px;
+}
+
 .fimage:hover{
 
   z-index: 0;
   filter: brightness(0.4);
   transform: translateY(0.2rem);
   transition: transform 0.5s ease-in-out;
+  
 
 
 }

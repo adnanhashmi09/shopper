@@ -38,15 +38,15 @@ const Housedecgrid = ({data}) => {
         
           <Slider {...settings}>
             {data.map((product, idx) => {
-              const { id, name, image_src, seller, category, price, quantity } = product;
-              if (id >= 16 && id <=20){
+              const { name, image, category } = product;
+              if (category === 'Decoration'){
                 return (
                   <article
-                    key={id}
+                    key={name}
                     className={idx === imageIndex + 1 ? "activeSlide" : "slide"}
                   >
                     <Link to="/buy">
-                      <img src={image_src} alt={name} className="fimage" />
+                      <img src={image} alt={name} className="fimage" />
                     </Link>
                     <div className="fitem-info">
                       <h4 className="fitem-header">{name}</h4>

@@ -23,28 +23,28 @@ const Grocery = ({ data }) => {
   const settings = {
     centerMode: true,
   centerPadding: '60px',
-  slidesToShow: 1,
+  slidesToShow: 2,
   };
 
   return (
     <div className="gcontainer">
       <Slider {...settings}>
         {data.map((product) => {
-          const { p_id, name, description, category, seller, price } =
+          const { name, image, category } =
             product;
-          if (true) {
+          if (category === 'Grocery') {
             return (
-              <div key={p_id} className="pp-item">
-                <img src={`http://localhost:5000/${description}`} alt="desc" className="pp-image" />
-                <Link to={`/buy/${p_id}`} style={{ textDecoration: "none" }}>
+              <div key={name} className="pp-item">
+                <img src={image} alt="desc" className="pp-image" />
+                <Link to={`/buy/${name}`} style={{ textDecoration: "none" }}>
                   <div className="pitem-info">
                     <div className="pupper">
                       <h4 className="pitem-header">{name}</h4>
-                      <h4 className="pprice">
+                      {/* <h4 className="pprice">
                         <FontAwesomeIcon icon={faRupeeSign}></FontAwesomeIcon>
                         {price}
                       </h4>
-                      <p className="pseller">{seller}</p>
+                      <p className="pseller">{seller}</p> */}
                     </div>
                     <h5>{category}</h5>
                   </div>

@@ -16,38 +16,32 @@ const Education = ({ data }) => {
   const settings = {
     centermode: true,
     centerpadding: "20px",
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     dots: true,
     autoplay: true,
     autoplaySpeed: 1000,
 
-    beforeChange: function (current, next) {
-      // if(current === 5){
-      //   setImageIndex(0);
-      // }
-      setImageIndex(next);
-    },
+  
   };
 
   return (
     <div className="fcontainer">
       <Slider {...settings}>
         {data.map((product, idx) => {
-          const { id, name, image_src, seller, category, price, quantity } =
+          const { name, category, image} =
             product;
-          if (id >= 31 && id <= 37) {
+          if (category === 'Books') {
             return (
               <article
-                key={id}
+                key={name}
                 className={idx === imageIndex + 1 ? "activeSlide" : "slide"}
               >
                 <Link to="/buy">
-                  <img src={image_src} alt={name} className="fimage" />
+                  <img src={image} alt={name} className="fimage" />
                 </Link>
                 <div className="fitem-info">
                   <h4 className="fitem-header">{name}</h4>
-                  <h4>NCERT</h4>
                 </div>
               </article>
             );

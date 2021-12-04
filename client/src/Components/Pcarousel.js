@@ -31,16 +31,15 @@ const Pcarousel = ({ data }) => {
     <div className="pcontainer">
       <Slider {...settings}>
         {data.map((product) => {
-          const { id, name, image_src, seller, category, price, quantity } = product;
-          if (id <= 12 && id >= 1) {
+          const { name, image, category } = product;
+          if (category === 'Sports') {
             return (
-              <div key={id} className="pp-item">
-                <img src={image_src} alt="desc" className="pp-image" />
-                <Link to={`/buy/${id}`} style={{ textDecoration: "none" }}>
+              <div key={name} className="pp-item">
+                <img src={image} alt="desc" className="pp-image" />
+                <Link to={`/buy/${name}`} style={{ textDecoration: "none" }}>
                   <div className="pitem-info">
                     <div className="pupper">
                       <h4 className="pitem-header">{name}</h4>
-                      <p className="pseller">{seller}</p>
                     </div>
                     <h5>{category}</h5>
                   </div>

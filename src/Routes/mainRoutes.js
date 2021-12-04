@@ -15,4 +15,12 @@ router.post(
 
 router.get('/products', controller.fetchProducts);
 
+router.post('/pushcart', controller.addCart);
+
+router.post('/cart', controller.fetchCart);
+
+router.post('/clearcart', controller.clearCart);
+
+router.post('/order', controller.placeOrder);
+
 module.exports = router;

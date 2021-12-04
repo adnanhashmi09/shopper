@@ -1,6 +1,8 @@
+/* eslint-disable array-callback-return */
 const DatauriParser = require('datauri/parser');
 const path = require('path');
 const cloudinary = require('cloudinary').v2;
+const format = require('pg-format');
 const pool = require('../database/db');
 
 const parser = new DatauriParser();
@@ -9,9 +11,9 @@ const parser = new DatauriParser();
 
 // cloudinary config
 cloudinary.config({
-	cloud_name: 'dep937cl7',
-	api_key: '456522911832583',
-	api_secret: 'N0Zrxjo_1PfN0pCkvhv-9M7Rw5Y',
+	cloud_name: 'comders',
+	api_key: '849994789835335',
+	api_secret: 'iiSbCTjPLzsgRHJcp8f9caNaTTU',
 });
 
 // function to convert incoming file from frontend to a buffer
@@ -50,8 +52,85 @@ module.exports.fetchProducts = async (req, res) => {
         const result = await pool.query(
             'SELECT DISTINCT name, category, image FROM product'
         );
-        res.status(200).json(result);
+        res.status(200).json({ data: result.rows });
     } catch (err) {
         console.log(err);
     }
+};
+
+// replace req.session.id with customer or session id
+
+module.exports.addCart = async (req, res) => {
+	const { products, customer } = req.body;
+	const data = [];
+	products.map((product) => {
+		const { name, quantity } = product;
+		console.log(product);
+		data.push([name, customer, quantity]);
+	});
+	console.log(data);
+	try {
+		await pool.query(
+			format('INSERT INTO cart (name, c_id, quantity) VALUES %L '
+				+ 'ON CONFLICT ON CONSTRAINT cart_key DO UPDATE set quantity = EXCLUDED.quantity '
+				+ 'RETURNING *', data)
+		);
+
+		const deleted = await pool.query(
+			'DELETE FROM cart WHERE quantity = 0 RETURNING *'
+		);
+
+		res.json(deleted);
+	} catch (error) {
+		console.log(error);
+		res.status(400).json({ error });
+	}
+};
+
+module.exports.fetchCart = async (req, res) => {
+	const { customer } = req.body;
+
+	try {
+		const result = await pool.query(
+			`SELECT * FROM cart WHERE c_id = ${customer}`
+		);
+		res.json(result);
+	} catch (error) {
+		console.log(error);
+		res.status(400).json({ error });
+	}
+};
+
+module.exports.clearCart = async (req, res) => {
+	const { customer } = req.body;
+    try {
+        await pool.query(
+            `DELETE FROM cart WHERE c_id = ${customer}`
+        );
+		res.status(200).json({ success: 'rows deleted' });
+    } catch (error) {
+        console.log(error);
+		res.status(400).json({ error });
+    }
+};
+
+module.exports.placeOrder = async (req, res) => {
+	const { products, customer, payment } = req.body;
+	const { mode, price, status } = payment;
+	const data = [];
+	products.map((product) => {
+		const { name, quantity } = product;
+		console.log(product);
+		data.push([name, customer, quantity, `(${mode}, ${price}, ${status})`]);
+	});
+
+	try {
+		const result = await pool.query(
+			format('INSERT INTO orders (name, c_id, quantity, payments) VALUES %L RETURNING *', data)
+		);
+		res.json(result);
+	} catch (error) {
+		console.log(error);
+		res.status(400).json({ error });
+	}
 };
