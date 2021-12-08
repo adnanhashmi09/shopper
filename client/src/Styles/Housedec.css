@@ -39,14 +39,14 @@
 }   */
 
 .fimage{
-  height: 600px;
+  height: 300px;
   width: auto;
   margin: 0 auto;
 }
 
 .himg{
-  height:500px;
-  width:600px;
+  height:300px;
+  width:300px;
 }
 
 .fimage:hover{

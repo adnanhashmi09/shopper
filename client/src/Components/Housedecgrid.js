@@ -50,7 +50,6 @@ const Housedecgrid = ({data}) => {
                     </Link>
                     <div className="fitem-info">
                       <h4 className="fitem-header">{name}</h4>
-                      <h4>IKEA</h4>
                     </div>
                   </article>
                 );

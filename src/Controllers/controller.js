@@ -58,8 +58,6 @@ module.exports.fetchProducts = async (req, res) => {
     }
 };
 
-// replace req.session.id with customer or session id
-
 module.exports.addCart = async (req, res) => {
 	const { products, customer } = req.body;
 	const data = [];
@@ -92,7 +90,10 @@ module.exports.fetchCart = async (req, res) => {
 
 	try {
 		const result = await pool.query(
-			`SELECT * FROM cart WHERE c_id = ${customer}`
+			'SELECT DISTINCT product.name, price, s_id, category, image, quantity, c_id FROM product, cart '
+			+ `WHERE c_id = ${customer} `
+			+ 'AND product.name = cart.name '
+			+ 'AND product.stock >= cart.quantity'
 		);
 		res.json(result);
 	} catch (error) {
