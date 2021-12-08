@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRupeeSign } from "@fortawesome/free-solid-svg-icons";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import { useDispatchCart } from '../Context/Reducers';
 
 import "../Styles/Housedec.css";
 import { Link } from "react-router-dom";
 
 const Education = ({ data }) => {
-  const [imageIndex, setImageIndex] = useState(1);
+  const dispatch = useDispatchCart();
+  
+  const addToCart = (item) => {
+    item.quantity = 1;
+    dispatch({ type: "ADD", item});
+  };
 
   const settings = {
     centermode: true,
@@ -20,9 +24,7 @@ const Education = ({ data }) => {
     slidesToScroll: 1,
     dots: true,
     autoplay: true,
-    autoplaySpeed: 1000,
-
-  
+    autoplaySpeed: 1000,  
   };
 
   return (
@@ -35,11 +37,11 @@ const Education = ({ data }) => {
             return (
               <article
                 key={name}
-                className={idx === imageIndex + 1 ? "activeSlide" : "slide"}
+                className="slide"
               >
-                {/* <Link to="/cart"> */}
-                  <img src={image} alt={name} className="fimage" />
-                {/* </Link> */}
+                <Link to="/cart">
+                  <img src={image} alt={name} className="fimage" onClick={() => addToCart(product)}/>
+                </Link>
                 <div className="fitem-info">
                   <h4 className="fitem-header">{name}</h4>
                 </div>

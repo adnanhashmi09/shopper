@@ -29,8 +29,6 @@ const Cart = ({ product, handleRemove }) => {
 
 			<div className="productc">
 				<div className="itemc">{product.name}</div>
-				<div className="hashc">#4567RTT12</div>
-				{/* <div className="sellerc">{product.seller}</div> */}
 			</div>
 
 			<div className="pricec">
@@ -65,9 +63,7 @@ const Cart = ({ product, handleRemove }) => {
 export default function Store() {
 	const items = useCart();
 	const { cart } = items;
-	console.log(cart[0].price);
 	const dispatch = useDispatchCart();
-	// let [amount, setAmount] = useState(0);
 
 	const history = useHistory();
 	const [auth, setAuth] = useState(false);
@@ -101,25 +97,13 @@ export default function Store() {
 		dispatch({ type: 'CLEAR' });
 	};
 
-	// const handleAmount = () => {
-	// 	cart.map((itm, indx) => {
-	// 		amount += itm.quantity*itm.price;
-	// 		console.log("iq", itm.quantity);
-	// 		console.log("ip", itm.price); 
-						
-	// 	})
-	// 	setAmount(amount);
-	// }
-	// cart.map((itm, indx) => {
-	// 	amount += itm[indx].quantity*itm[indx].price;
-	// 	console.log(itm[indx]);
-	// });
-
 	let amount = 0;
-	for(let i=0; i< cart.length ;i++){
-		amount += cart[i].quantity*cart[i].price
+	if(cart.length !== 0){
+		for(let i=0; i< cart.length ;i++){
+			amount += cart[i].quantity*cart[i].price
+		}
+		console.log("amount", amount);
 	}
-	console.log("amount", amount);
 
 
 	if (cart.length === 0) {

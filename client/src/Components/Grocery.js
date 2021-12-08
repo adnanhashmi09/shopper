@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRupeeSign, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import {  faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import Slider from "react-slick";
@@ -17,6 +17,7 @@ const Grocery = ({ data }) => {
   const dispatch = useDispatchCart();
 
   const addToCart = (item) => {
+    item.quantity = 1;
     dispatch({ type: "ADD", item });
   };
 
