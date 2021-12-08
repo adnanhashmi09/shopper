@@ -4,36 +4,53 @@ const CartState = createContext();
 const CartDispatch = createContext();
 
 const reducer = (state, action) => {
+  let {cart, user_type, user_id} = state;
+
   switch (action.type) {
+
     case "ADD":
-      return [...state, action.item];
+      cart = [...state.cart, action.item];
+      return {cart, user_id, user_type};
 
     case "REMOVE":
-      const newArr = [...state];
-      const res = newArr.filter((c, idx) => idx !== action.idx);
-      return res;
+      const res = cart.filter((c) => c.name !== action.name);
+      return {
+        cart:res, user_id, user_type
+      };
 
     case "CLEAR":
-      const arr = [];
-      return arr;
+      cart = [];
+      console.log(cart);
+      return {
+        cart, user_id, user_type
+      };
 
-    // case "INCREMENT":
-    //   const narr = [...state];
-    //   const r = narr.map((c, idx) => {
-    //     if(idx === action.idx){
-    //       qty = qty+1;
-    //     }
-    //   })
-    //   return r;
+    case "INCREMENT":
+      cart.map ((item, idx) => { 
+        if (item.name === action.name){
 
-    // case "DECREMENT":
-    //   const darr = [...state];
-    //   const re = darr.map((c, idx) => {
-    //     if(idx === action.idx){
-    //       qty = qty+1;
-    //     }
-    //   })
-    //   return r;
+          console.log(item.quantity);
+          cart[idx].quantity += 1;
+        }})
+        console.log(cart);    
+      return {
+        cart,
+        user_id,
+        user_type
+      };
+
+      case "DECREMENT":
+      cart.map ((item, idx) => { 
+        if (item.name === action.name && item.quantity > 1){
+          const ivar = item.quantity - 1;
+          cart[idx].quantity = ivar;
+        }})
+        console.log(cart);    
+      return {
+        cart,
+        user_id,
+        user_type
+      };  
 
     default:
       throw new Error(`${action.type}`);
@@ -41,7 +58,18 @@ const reducer = (state, action) => {
 };
 
 export const CartProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, []);
+  const [state, dispatch] = useReducer(reducer, {
+    cart: [{
+      quantity: 1,
+      name: 'p1',
+      price:0,
+      category:null,
+      image:'',
+    }],  
+    user_type: null,
+    user_id: null,
+  });
+  // const [cart, dispatch] = useReducer(reducer, []);
 
   return (
     <CartDispatch.Provider value={dispatch}>

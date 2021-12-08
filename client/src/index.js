@@ -4,11 +4,11 @@ import App from './App';
 import {CartProvider} from './Context/Reducers';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <CartProvider>
-      <App />
-    </CartProvider>
-  </React.StrictMode>,
+    <>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </>,
   document.getElementById('root')
 );
 
