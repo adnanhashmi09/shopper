@@ -3,14 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRupeeSign, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import '../Styles/Products.css';
-
 import { useDispatchCart } from '../Context/Reducers';
 
 const Products = ({data}) => {
 
   const dispatch = useDispatchCart();
-
+  
   const addToCart = (item) => {
+    item.quantity = 1;
     dispatch({ type: "ADD", item});
   };
 
@@ -25,12 +25,7 @@ const Products = ({data}) => {
                     <img src={image_src} alt="desc" className="p-image" />
                     <div className="item-info">
                       <div className="upper">
-                        <Link
-                          to={`/buy/${id}`}
-                          style={{ textDecoration: "none" }}
-                        >
-                          <h4 className="item-header">{name}</h4>
-                        </Link>
+                        <h4 className="item-header">{name}</h4>
                         <p className="seller">{seller}</p>
                       </div>
                       <h5>{category}</h5>

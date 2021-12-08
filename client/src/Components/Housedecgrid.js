@@ -1,20 +1,22 @@
 import React , {useState} from 'react';
 import Slider from 'react-slick';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRupeeSign } from '@fortawesome/free-solid-svg-icons';
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import '../Styles/Housedec.css';
 import { Link } from 'react-router-dom';
 
+import { useDispatchCart } from '../Context/Reducers';
+
+
 const Housedecgrid = ({data}) => {
 
-  const [imageIndex, setImageIndex] = useState(1);
- 
-
+  const dispatch = useDispatchCart();
+  
+  const addToCart = (item) => {
+    item.quantity = 1;
+    dispatch({ type: "ADD", item});
+  };
 
     const settings = {
       centermode: true,
@@ -23,15 +25,8 @@ const Housedecgrid = ({data}) => {
       slidesToScroll: 1,
       dots: true,
       autoplay: true,
-      autoplaySpeed: 1000,
-    
-      beforeChange: function(current, next) {
-        // if(current === 5){
-        //   setImageIndex(0);
-        // }
-        setImageIndex(next );
+      autoplaySpeed: 2000,
       }
-    };
 
     return (
       <div className="fcontainer">
@@ -43,10 +38,10 @@ const Housedecgrid = ({data}) => {
                 return (
                   <article
                     key={name}
-                    className={idx === imageIndex + 1 ? "activeSlide" : "slide"}
+                    className="slide"
                   >
-                    <Link to="/buy">
-                      <img src={image} alt={name} className="fimage himg" />
+                    <Link to="/cart">
+                      <img src={image} alt={name} className="fimage himg" onClick={() => addToCart(product)} />
                     </Link>
                     <div className="fitem-info">
                       <h4 className="fitem-header">{name}</h4>
