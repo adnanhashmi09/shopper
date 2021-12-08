@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import '../Styles/Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown';
 
 const Navbar = () => {
@@ -78,11 +78,6 @@ const Navbar = () => {
 							Home
 						</Link>
 					</li>
-					{/* <li className="its">
-              <Link to="/products" className="i">
-                Products
-              </Link>
-            </li> */}
 					<li
 						className="nav-item its"
 						onMouseEnter={onMouseEnter}
@@ -99,7 +94,7 @@ const Navbar = () => {
 					<li className="its">
 						<Link to="/sell">
 							<FontAwesomeIcon
-								icon={faUser}
+								icon={faPlusCircle}
 								size="2x"
 								color="#000"
 								className="user"

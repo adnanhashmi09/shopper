@@ -50,7 +50,7 @@ module.exports.upload_product = async (req, res) => {
 module.exports.fetchProducts = async (req, res) => {
     try {
         const result = await pool.query(
-            'SELECT DISTINCT name, category, image FROM product'
+            'SELECT DISTINCT name, category, image, price FROM product'
         );
         res.status(200).json({ data: result.rows });
     } catch (err) {

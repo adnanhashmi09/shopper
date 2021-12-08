@@ -14,56 +14,48 @@ import { useHistory } from 'react-router-dom';
 
 import '../Styles/Cart.css';
 import { useCart, useDispatchCart } from '../Context/Reducers';
-import Checkout from './Checkout';
+import '../Styles/Checkout.css';
+import { Link } from 'react-router-dom';
+// import Checkout from './Checkout';
 
-const Cart = ({ product, idx, handleRemove }) => {
+const Cart = ({ product, handleRemove }) => {
 	const dispatch = useDispatchCart();
-
-	const handleIncrement = () => {
-		product.quantity = product.quantity + 1;
-		console.log(product.quantity);
-	};
-
-	const handleDecrement = () => {
-		product.quantity = product.quantity - 1;
-	};
 
 	return (
 		<>
 			<div className="imagec">
-				<img src={product.image_src} alt="" className="imgc" />
+				<img src={product.image} alt="" className="imgc" />
 			</div>
+
 			<div className="productc">
 				<div className="itemc">{product.name}</div>
 				<div className="hashc">#4567RTT12</div>
-				<div className="sellerc">{product.seller}</div>
+				{/* <div className="sellerc">{product.seller}</div> */}
 			</div>
+
 			<div className="pricec">
 				<FontAwesomeIcon icon={faRupeeSign}></FontAwesomeIcon>
 				{product.price}
 			</div>
 			<div className="qtyc">
-				{/* <Button className="qtyb">
-            <FontAwesomeIcon
-              icon={faMinus}
-              onClick={() => handleDecrement()}
-            ></FontAwesomeIcon>
-          </Button> */}
-				<input type="number" />
-				{/* <Button className="qtyb">
-            <FontAwesomeIcon
-              icon={faPlus}
-              onClick={() => product.quantity + 1}
-            ></FontAwesomeIcon>
-          </Button> */}
+				<button className="qtyb" onClick={() => dispatch({ type: "DECREMENT", name: product.name })}>
+					<FontAwesomeIcon
+						icon={faMinus}
+					></FontAwesomeIcon>
+				</button>
+				<input type="number" value={product.quantity} disabled />
+				<button className="qtyb" onClick={() => dispatch({ type: "INCREMENT", name: product.name })}>
+					<FontAwesomeIcon
+						icon={faPlus}
+					></FontAwesomeIcon>
+				</button>
 			</div>
-			{/* <div className="totc">{product.quantity * product.price}</div> */}
 			<div className="remc">
 				<FontAwesomeIcon
 					icon={faTrash}
 					color="red"
 					size="2x"
-					onClick={() => handleRemove(idx)}
+					onClick={() => handleRemove(product.name)}
 				></FontAwesomeIcon>
 			</div>
 		</>
@@ -72,7 +64,10 @@ const Cart = ({ product, idx, handleRemove }) => {
 
 export default function Store() {
 	const items = useCart();
+	const { cart } = items;
+	console.log(cart[0].price);
 	const dispatch = useDispatchCart();
+	// let [amount, setAmount] = useState(0);
 
 	const history = useHistory();
 	const [auth, setAuth] = useState(false);
@@ -98,15 +93,36 @@ export default function Store() {
 		console.log(auth);
 	}, [auth]);
 
-	const handleRemove = (idx) => {
-		dispatch({ type: 'REMOVE', idx });
-	};
+	const handleRemove = (name) => {
+		dispatch({ type: 'REMOVE', name });
 
+	}
 	const handleClearCart = () => {
 		dispatch({ type: 'CLEAR' });
 	};
 
-	if (items.length === 0) {
+	// const handleAmount = () => {
+	// 	cart.map((itm, indx) => {
+	// 		amount += itm.quantity*itm.price;
+	// 		console.log("iq", itm.quantity);
+	// 		console.log("ip", itm.price); 
+						
+	// 	})
+	// 	setAmount(amount);
+	// }
+	// cart.map((itm, indx) => {
+	// 	amount += itm[indx].quantity*itm[indx].price;
+	// 	console.log(itm[indx]);
+	// });
+
+	let amount = 0;
+	for(let i=0; i< cart.length ;i++){
+		amount += cart[i].quantity*cart[i].price
+	}
+	console.log("amount", amount);
+
+
+	if (cart.length === 0) {
 		return (
 			<>
 				{auth ? (
@@ -129,12 +145,11 @@ export default function Store() {
 					<div className="cmain">
 						<div className="left">
 							<div className="subleft">
-								{items.map((item, idx) => (
+								{cart.map((item, idx) => (
 									<div className="sleft">
 										<Cart
 											handleRemove={handleRemove}
 											key={idx}
-											idx={idx}
 											product={item}
 										/>
 									</div>
@@ -149,7 +164,29 @@ export default function Store() {
 						</div>
 						<div className="right">
 							<div className="subright">
-								<Checkout />
+								<div className="chmain">
+									<div className="st">
+										<h3>Subtotal</h3>
+										<h5>{amount}</h5>
+									</div>
+									<hr />
+									<div className="tax">
+										<h3>Tax</h3>
+										<h5>{(amount*0.18).toFixed(1)}</h5>
+									</div>
+									<hr />
+									<div className="ttl">
+										<h1>Total</h1>
+										<h1>{(amount*1.18).toFixed(1)}</h1>
+									</div>
+									<Link to="/deliver">
+										<div className="chdbtn">
+											<button className="chbtn">
+												<p>Checkout</p>
+											</button>
+										</div>
+									</Link>
+								</div>
 							</div>
 						</div>
 					</div>

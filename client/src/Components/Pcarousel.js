@@ -16,6 +16,7 @@ const Pcarousel = ({ data }) => {
   const dispatch = useDispatchCart();
 
   const addToCart = (item) => {
+    item.quantity = 1;
     dispatch({ type: "ADD", item });
   };
 
@@ -31,7 +32,7 @@ const Pcarousel = ({ data }) => {
     <div className="pcontainer">
       <Slider {...settings}>
         {data.map((product) => {
-          const { name, image, category } = product;
+          const { name, image, category, price } = product;
           if (category === 'Sports') {
             return (
               <div key={name} className="pp-item">
