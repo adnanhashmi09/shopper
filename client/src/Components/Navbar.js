@@ -1,12 +1,19 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../Styles/Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faShoppingCart, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown';
+import { useDispatchCart, useCart } from '../Context/Reducers';
 
-const Navbar = () => {
+const Navbar = ({ login }) => {
+
+	const dispatch = useDispatchCart();
+	const items = useCart();
+	const [userType, setUserType] = useState(null);
+	const { cart } = items;
+
 	useLayoutEffect(() => {
 		fetch('http://localhost:5000/isLoggedIn', {
 			method: 'GET',
@@ -14,13 +21,30 @@ const Navbar = () => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
+				console.log(data);
 				if (data.id) {
 					setAuth(true);
+					setUserType(data.utype);
 				} else {
 					setAuth(false);
 				}
 			});
-	}, []);
+	}, [login]);
+
+	useLayoutEffect(() => {
+		fetch('http://localhost:5000/api/cart', {
+			method: 'GET',
+			credentials: 'include'
+		})
+		.then((res) => res.json())
+		.then((data) => {
+			dispatch({ type: "INITIALISE", products: data });
+			console.log(items);
+		})
+		.catch((err) => {
+			console.log(err);
+		})
+	}, [login]);
 
 	const [trigger, setTrigger] = useState(false);
 	const [auth, setAuth] = useState(false);
@@ -53,6 +77,10 @@ const Navbar = () => {
 			const response = await fetch('http://localhost:5000/logout', {
 				method: 'POST',
 				credentials: 'include',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ cart }) 
 			});
 
 			const data = await response.json();

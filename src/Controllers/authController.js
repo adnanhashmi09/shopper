@@ -1,6 +1,8 @@
+/* eslint-disable camelcase */
 const bcrypt = require('bcrypt');
 const pool = require('../database/db');
 const { validateCredentials } = require('../utils/authValidate');
+const { addCart } = require('../utils/cartUtils');
 
 // error handling
 const handleError = (ERROR) => {
@@ -39,8 +41,11 @@ module.exports.signup_post = async (req, res) => {
 		);
 
 		const userType = Object.keys(isA.rows[0])[0];
+		const { s_id, c_id } = isA.rows[0];
 
-		req.session.uid = id;
+		req.session.uid = (c_id || s_id);
+		req.session.utype = (c_id ? 'c_id' : 's_id');
+
 		res.json({ id, name: fullName, email: emailAddress, type: userType });
 	} catch (error) {
 		console.error(error);
@@ -70,7 +75,21 @@ module.exports.login_post = async (req, res) => {
 		}
 
 		const { id, name, email: emailAddress } = user.rows[0];
-		req.session.uid = id;
+
+		let result = await pool.query(
+			`SELECT * FROM seller WHERE user_id = ${id}`
+		);
+
+		if (result.rows.length === 0) {
+			result = await await pool.query(
+				`SELECT * FROM customer WHERE user_id = ${id}`
+			);
+		}
+		const { s_id, c_id } = result.rows[0];
+
+		req.session.uid = (c_id || s_id);
+		req.session.utype = (c_id ? 'c_id' : 's_id');
+
 		res.json({ id, name, email: emailAddress });
 	} catch (error) {
 		console.error(error);
@@ -79,21 +98,30 @@ module.exports.login_post = async (req, res) => {
 	}
 };
 
-module.exports.logout = (req, res) => {
-	req.session.destroy((error) => {
-		if (error) {
-			console.error(error);
-			const err = handleError(error);
-			res.status(400).json(err);
-		}
+module.exports.logout = async (req, res) => {
+	const { uid } = req.session;
+	const { cart } = req.body;
+	try {
+		await addCart(cart, uid);
 
+		req.session.destroy((error) => {
+			if (error) {
+				console.error(error);
+				const err = handleError(error);
+				res.status(400).json(err);
+			}
 		res.json({ msg: 'logged out.' });
-	});
+		});
+	} catch (error) {
+		console.log(error);
+		res.json({ error });
+	}
 };
 
 module.exports.isLoggedIn = (req, res) => {
+	console.log(req.session);
 	if (req.session.uid) {
-		res.json({ id: req.session.uid });
+		res.json({ id: req.session.uid, utype: req.session.utype });
 	} else {
 		res.send(false);
 	}

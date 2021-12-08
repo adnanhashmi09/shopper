@@ -8,6 +8,10 @@ const reducer = (state, action) => {
 
   switch (action.type) {
 
+    case "INITIALISE":
+      cart = [...action.products];
+      return {cart, user_id, user_type}
+
     case "ADD":
       cart = [...state.cart, action.item];
       return {cart, user_id, user_type};
@@ -40,17 +44,17 @@ const reducer = (state, action) => {
       };
 
       case "DECREMENT":
-      cart.map ((item, idx) => { 
-        if (item.name === action.name && item.quantity > 1){
-          const ivar = item.quantity - 1;
-          cart[idx].quantity = ivar;
-        }})
-        console.log(cart);    
-      return {
-        cart,
-        user_id,
-        user_type
-      };  
+        cart.map ((item, idx) => { 
+          if (item.name === action.name && item.quantity > 1){
+            const ivar = item.quantity - 1;
+            cart[idx].quantity = ivar;
+          }})
+          console.log(cart);    
+        return {
+          cart,
+          user_id,
+          user_type
+        };  
 
     default:
       throw new Error(`${action.type}`);
@@ -59,13 +63,7 @@ const reducer = (state, action) => {
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
-    cart: [{
-      quantity: 1,
-      name: 'p1',
-      price:0,
-      category:null,
-      image:'',
-    }],  
+    cart: [],  
     user_type: null,
     user_id: null,
   });

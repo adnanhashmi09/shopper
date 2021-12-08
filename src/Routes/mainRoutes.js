@@ -17,7 +17,7 @@ router.get('/products', controller.fetchProducts);
 
 router.post('/pushcart', controller.addCart);
 
-router.post('/cart', controller.fetchCart);
+router.get('/cart', controller.fetchCart);
 
 router.post('/clearcart', controller.clearCart);
 

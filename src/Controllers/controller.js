@@ -48,6 +48,7 @@ module.exports.upload_product = async (req, res) => {
 };
 
 module.exports.fetchProducts = async (req, res) => {
+	console.log(req.session);
     try {
         const result = await pool.query(
             'SELECT DISTINCT name, category, image, price FROM product'
@@ -86,16 +87,15 @@ module.exports.addCart = async (req, res) => {
 };
 
 module.exports.fetchCart = async (req, res) => {
-	const { customer } = req.body;
-
+	const { uid } = req.session;
+	console.log(req.session);
 	try {
 		const result = await pool.query(
-			'SELECT DISTINCT product.name, price, s_id, category, image, quantity, c_id FROM product, cart '
-			+ `WHERE c_id = ${customer} `
-			+ 'AND product.name = cart.name '
-			+ 'AND product.stock >= cart.quantity'
+			'SELECT DISTINCT product.name, price, category, image, quantity FROM product, cart '
+			+ `WHERE c_id = ${uid} `
+			+ 'AND product.name = cart.name'
 		);
-		res.json(result);
+		res.json(result.rows);
 	} catch (error) {
 		console.log(error);
 		res.status(400).json({ error });

@@ -65,12 +65,12 @@ const Cart = ({ product, handleRemove }) => {
 export default function Store() {
 	const items = useCart();
 	const { cart } = items;
-	console.log(cart[0].price);
+	console.log(cart);
 	const dispatch = useDispatchCart();
 	// let [amount, setAmount] = useState(0);
 
 	const history = useHistory();
-	const [auth, setAuth] = useState(false);
+	const [auth, setAuth] = useState(true);
 
 	useLayoutEffect(() => {
 		fetch('http://localhost:5000/isLoggedIn', {
@@ -101,6 +101,24 @@ export default function Store() {
 		dispatch({ type: 'CLEAR' });
 	};
 
+	const checkoutHandler = () => {
+		fetch('http://localhost:5000/api/order', {
+			method: 'POST',
+			credentials: 'include',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ cart }) 
+		})
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+		})
+		.catch((err) => {
+			console.log(err);
+		})
+	}
+
 	// const handleAmount = () => {
 	// 	cart.map((itm, indx) => {
 	// 		amount += itm.quantity*itm.price;
@@ -127,7 +145,6 @@ export default function Store() {
 			<>
 				{auth ? (
 					<>
-						<Navbar />
 						<main className="ecart">
 							<p>Cart is empty</p>
 						</main>
@@ -140,7 +157,6 @@ export default function Store() {
 		<>
 			{auth ? (
 				<>
-					<Navbar />
 					<h1 className="header">CART</h1>
 					<div className="cmain">
 						<div className="left">
@@ -179,13 +195,11 @@ export default function Store() {
 										<h1>Total</h1>
 										<h1>{(amount*1.18).toFixed(1)}</h1>
 									</div>
-									<Link to="/deliver">
-										<div className="chdbtn">
-											<button className="chbtn">
-												<p>Checkout</p>
-											</button>
-										</div>
-									</Link>
+									<div className="chdbtn">
+										<button className="chbtn" onClick={checkoutHandler}>
+											<p>Checkout</p>
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>

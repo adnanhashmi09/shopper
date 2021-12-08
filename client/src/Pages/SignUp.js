@@ -3,7 +3,7 @@ import '../Styles/SignUp.css';
 import { Link, useHistory } from 'react-router-dom';
 import image1 from '../Assets/3.jpeg';
 
-const SignUp = () => {
+const SignUp = ({ authHandler }) => {
 	const history = useHistory();
 	const submitHandler = async (e) => {
 		e.preventDefault();
@@ -32,6 +32,7 @@ const SignUp = () => {
 			if (!response.ok) {
 				throw data;
 			}
+			authHandler(true);
 			history.push('/');
 		} catch (error) {
 			console.log(error);

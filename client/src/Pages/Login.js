@@ -3,7 +3,7 @@ import '../Styles/Login.css';
 import { Link, useHistory } from 'react-router-dom';
 import image1 from '../Assets/3.jpeg';
 
-const Login = () => {
+const Login = ({ authHandler }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const history = useHistory();
@@ -29,6 +29,7 @@ const Login = () => {
 			if (!response.ok) {
 				throw data;
 			}
+			authHandler(true);
 			history.push('/');
 		} catch (error) {
 			console.log(error);
